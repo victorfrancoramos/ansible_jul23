@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  name: create export policy for Trident 
+  name: create export policy for svm1
   vars:
     hostname: 192.168.0.101
     username: admin
