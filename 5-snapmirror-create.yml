@@ -31,9 +31,9 @@
       dest_hostname: "{{ dst_ontap }}"
       https: true
       validate_certs: false
-  - name: sleep for 30 seconds and continue with play
+  - name: sleep for 10 seconds and continue with play
       wait_for:
-      timeout: 30
+      timeout: 10
     delegate_to: localhost
   - name: Source vserver peer create
     na_ontap_vserver_peer:
@@ -48,9 +48,9 @@
       dest_hostname: "{{ dst_ontap }}"
       https: true
       validate_certs: false
-  - name: sleep for 30 seconds and continue with play
+  - name: sleep for 10 seconds and continue with play
       wait_for:
-      timeout: 30
+    timeout: 10
     delegate_to: localhost
   - name: Validate destination FlexVol
     na_ontap_volume:
