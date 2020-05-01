@@ -12,6 +12,12 @@
   vars_files:
    - var_cluster2.yml
   tasks:
+  - name: Install Licenses
+    na_ontap_cluster:
+      state: present
+      license_code: "{{ item }}"
+      <<: *login
+    with_items: "{{ licenses }}"
   - name: Set NTP
     na_ontap_ntp:
       state: present
