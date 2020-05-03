@@ -32,16 +32,20 @@
       ostype: linux
       vserver: svm21
   tasks:
-  - name: Down LIF's
-    na_ontap_command:
-      command: ['network', 'interface', 'modify', '-vserver', "{{ item.vserver }}",'-lif', "{{ item.name }}", '-status-admin', 'down']
-      privilege: admin
+  - name: Delete cifs_server
+    na_ontap_cifs_server:
+      state: absent
+      name: SVM21
+      vserver: svm21
       <<: *login
-    with_items: "{{ lif }}"
-  - name: Delete LIF's
-    na_ontap_command:
-      command: ['network', 'interface', 'delete', '-vserver', "{{ item.vserver }}",'-lif', "{{ item.name }}"]
-      privilege: admin
+  - name: Down LIF's
+    na_ontap_interface:
+      state: absent
+      interface_name: "{{ item.name }}"
+      home_port: "{{ item.home }}"
+      home_node: "{{ item.node }}"
+      role: data
+      vserver: "{{ item.vserver }}"
       <<: *login
     with_items: "{{ lif }}"
   - name: Delete vols
