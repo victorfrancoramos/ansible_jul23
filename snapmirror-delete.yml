@@ -26,6 +26,8 @@
       hostname: "{{ dst_ontap }}"
       username: "{{ username }}"
       password: "{{ password }}"
+      https: true
+      validate_certs: false
   - name: Delete Snapmirror Destination Volume
     na_ontap_volume:
       state: absent
