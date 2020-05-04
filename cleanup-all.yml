@@ -1,0 +1,131 @@
+---
+- name: remove snapmirror relationship on svm2
+  hosts: localhost
+  gather_facts: false
+  vars:
+    peer_vserver: svm1
+    peer_cluster: cluster1
+    dest_hostname: 192.168.0.101
+    cluster: cluster2
+    vserver: svm2
+    login: &login1
+     hostname: 192.168.0.102
+     username: admin
+     password: Netapp1!
+     https: true
+     validate_certs: false
+  tasks:
+  - name: delete snapmirror
+    na_ontap_command:
+      command: ['snapmirror delete *']
+      privilege: admin
+      <<: *login1
+  - name: remove vserver peering
+    na_ontap_vserver_peer:
+      state: absent
+      peer_vserver: "{{ peer_vserver }}"
+      peer_cluster: "{{ peer_cluster }}"
+      vserver: "{{ vserver }}"
+      applications: snapmirror
+      <<: *login1
+  - name: remove cluster peering
+    na_ontap_cluster_peer:
+      state: absent
+      dest_cluster_name: "{{ peer_cluster }}"
+      source_cluster_name: "{{ cluster }}"
+      dest_hostname: "{{ dest_hostname }}"
+      <<: *login1
+
+- hosts: localhost
+  gather_facts: false
+  name: cleanup cluster1
+  vars:
+    vserver: svm1
+    login2: &login2
+     hostname: 192.168.0.101
+     username: admin
+     password: Netapp1!
+     https: true
+     validate_certs: false
+  tasks:
+  - name: Gather facts
+    na_ontap_info:
+      state: info
+      gather_subset:
+      - net_interface_info
+      - volume_info
+      <<: *login2
+    register: netapp
+  - name: remove lifs
+    na_ontap_interface:
+      state: absent
+      interface_name: "{{ netapp.ontap_info.net_interface_info[item].interface_name }}"
+      vserver: "{{ vserver }}"
+      <<: *login2
+    with_items: "{{ netapp.ontap_info.net_interface_info }}"
+    when:
+    - "{{ netapp.ontap_info.net_interface_info[item].vserver == vserver }}"
+    ignore_errors: yes
+  - name: remove vols
+    na_ontap_volume:
+      state: absent
+      name:  "{{ netapp.ontap_info.volume_info[item].volume_id_attributes.name }}"
+      vserver: "{{ vserver }}"
+      <<: *login2
+    with_items: "{{ netapp.ontap_info.volume_info }}"
+    when:
+    - netapp.ontap_info.volume_info[item].volume_id_attributes.owning_vserver_name == "{{ vserver }}"
+    - not (netapp.ontap_info.volume_info[item].volume_id_attributes.name).endswith('root')
+    ignore_errors: yes
+  - name: Remove Vserver
+    na_ontap_svm:
+      state: absent
+      name: "{{ vserver }}"
+      <<: *login2
+      
+- hosts: localhost
+  gather_facts: false
+  name: cleanup cluster2
+  vars:
+    vserver: svm2
+    login3: &login3
+     hostname: 192.168.0.102
+     username: admin
+     password: Netapp1!
+     https: true
+     validate_certs: false
+  tasks:
+  - name: Gather facts
+    na_ontap_info:
+      state: info
+      gather_subset:
+      - net_interface_info
+      - volume_info
+      <<: *login3
+    register: netapp
+  - name: remove lifs
+    na_ontap_interface:
+      state: absent
+      interface_name: "{{ netapp.ontap_info.net_interface_info[item].interface_name }}"
+      vserver: "{{ vserver }}"
+      <<: *login3
+    with_items: "{{ netapp.ontap_info.net_interface_info }}"
+    when:
+    - "{{ netapp.ontap_info.net_interface_info[item].vserver == vserver }}"
+    ignore_errors: yes
+  - name: remove vols
+    na_ontap_volume:
+      state: absent
+      name:  "{{ netapp.ontap_info.volume_info[item].volume_id_attributes.name }}"
+      vserver: "{{ vserver }}"
+      <<: *login3
+    with_items: "{{ netapp.ontap_info.volume_info }}"
+    when:
+    - netapp.ontap_info.volume_info[item].volume_id_attributes.owning_vserver_name == "{{ vserver }}"
+    - not (netapp.ontap_info.volume_info[item].volume_id_attributes.name).endswith('root')
+    ignore_errors: yes
+  - name: Remove Vserver
+    na_ontap_svm:
+      state: absent
+      name: "{{ vserver }}"
+      <<: *login3
