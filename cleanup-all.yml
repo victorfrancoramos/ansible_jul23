@@ -4,7 +4,6 @@
   gather_facts: false
   ignore_errors: true
   vars:
-    peer_vserver: svm1
     vserver1: svm1
     vserver2: svm2
     peer_cluster: cluster1
@@ -31,9 +30,9 @@
   - name: remove vserver peering
     na_ontap_vserver_peer:
       state: absent
-      peer_vserver: "{{ peer_vserver }}"
+      peer_vserver: "{{ vserver1 }}"
       peer_cluster: "{{ peer_cluster }}"
-      vserver: "{{ vserver }}"
+      vserver: "{{ vserver1 }}"
       applications: snapmirror
       <<: *login2
   - name: remove cluster peering
