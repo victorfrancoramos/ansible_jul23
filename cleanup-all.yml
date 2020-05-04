@@ -9,6 +9,7 @@
     peer_cluster: cluster1
     dest_hostname: 192.168.0.101
     cluster: cluster2
+    ntpservers: 192.168.0.253
     login1: &login1
      hostname: 192.168.0.101
      username: admin
@@ -69,7 +70,7 @@
       state: absent
       version: auto
       server_name: "{{ ntpservers }}"
-      <<: *login1
+      <<: *login2
   - name: Set Timezone Default cluster1
     na_ontap_command:
       command: ['time', '-timezone', 'UTC']
@@ -96,7 +97,7 @@
       name:  "{{ netapp1.ontap_info.volume_info[item].volume_id_attributes.name }}"
       vserver: "{{ vserver1 }}"
       <<: *login1
-    with_items: "{{ netapp.ontap_info.volume_info }}"
+    with_items: "{{ netapp1.ontap_info.volume_info }}"
     when:
     - netapp1.ontap_info.volume_info[item].volume_id_attributes.owning_vserver_name == "{{ vserver1 }}"
     - not (netapp1.ontap_info.volume_info[item].volume_id_attributes.name).endswith('root')
