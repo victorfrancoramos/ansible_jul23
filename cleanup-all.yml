@@ -4,17 +4,6 @@
   gather_facts: false
   ignore_errors: true
   vars:
-    licenses:
-    - YRUMQKDBHKPKICAAAAAAAAAAAAAA
-    - KMSBRKDBHKPKICAAAAAAAAAAAAAA
-    - WGQQRKDBHKPKICAAAAAAAAAAAAAA
-    - IBOFSKDBHKPKICAAAAAAAAAAAAAA
-    - GQJJTKDBHKPKICAAAAAAAAAAAAAA
-    - SKHYTKDBHKPKICAAAAAAAAAAAAAA
-    - EFFNUKDBHKPKICAAAAAAAAAAAAAA
-    - QZCCVKDBHKPKICAAAAAAAAAAAAAA
-    - CUARVKDBHKPKICAAAAAAAAAAAAAA
-    - OOYFWKDBHKPKICAAAAAAAAAAAAAA
     peer_vserver: svm1
     vserver1: svm1
     vserver2: svm2
@@ -162,15 +151,3 @@
      interface_name: peer-lif-n1
      vserver: cluster2
      <<: *login2 
-  - name: remove Licenses cluster1
-    na_ontap_cluster:
-      state: absent
-      license_code: "{{ item }}"
-      <<: *login1
-    with_items: "{{ licenses }}"
-  - name: remove Licenses cluster2
-    na_ontap_cluster:
-      state: absent
-      license_code: "{{ item }}"
-      <<: *login2
-    with_items: "{{ licenses }}"    
