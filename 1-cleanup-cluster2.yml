@@ -36,8 +36,6 @@
     na_ontap_interface:
       state: absent
       interface_name: "{{ item.name }}"
-      home_port: "{{ item.home }}"
-      home_node: "{{ item.node }}"
       role: data
       vserver: "{{ item.vserver }}"
       <<: *login
