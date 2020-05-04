@@ -85,7 +85,7 @@
     na_ontap_interface:
       state: absent
       interface_name: "{{ netapp1.ontap_info.net_interface_info[item].interface_name }}"
-      vserver: "{{ vserver }}"
+      vserver: "{{ vserver1 }}"
       <<: *login1
     with_items: "{{ netapp1.ontap_info.net_interface_info }}"
     when:
