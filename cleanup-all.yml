@@ -33,7 +33,7 @@
       state: absent
       peer_vserver: "{{ vserver1 }}"
       peer_cluster: "{{ peer_cluster }}"
-      vserver: "{{ vserver1 }}"
+      vserver: "{{ vserver2 }}"
       applications: snapmirror
       <<: *login2
   - name: remove cluster peering
