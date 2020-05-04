@@ -19,16 +19,11 @@
     password: Netapp1!
     passphrase: Netapp123
   tasks:
-  - name: Delete SnapMirror
-    na_ontap_snapmirror:
-      state: absent
-      destination_path: "{{ dst_path }}"
-      source_hostname: "{{ src_ontap }}"
-      hostname: "{{ dst_ontap }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      https: true
-      validate_certs: false
+  - name: Set Timezone
+    na_ontap_command:
+      command: ['snapmirror delete *']
+      privilege: admin
+      <<: *login
   - name: Delete Snapmirror Destination Volume
     na_ontap_volume:
       state: absent
