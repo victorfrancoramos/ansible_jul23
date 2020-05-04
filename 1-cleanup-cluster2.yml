@@ -32,13 +32,7 @@
       ostype: linux
       vserver: svm21
   tasks:
-  - name: Delete cifs_server
-    na_ontap_cifs_server:
-      state: absent
-      name: SVM21
-      vserver: svm21
-      <<: *login
-  - name: Down LIF's
+  - name: Delete LIF's
     na_ontap_interface:
       state: absent
       interface_name: "{{ item.name }}"
