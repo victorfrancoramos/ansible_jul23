@@ -151,13 +151,3 @@
      interface_name: peer-lif-n1
      vserver: cluster2
      <<: *login2
-  - name: remove licenses cluster1
-    na_ontap_command:
-      command: ['license delete -serial-number 1-80-000011']
-      privilege: admin
-      <<: *login1
-  - name: remove licenses cluster2
-    na_ontap_command:
-      command: ['license delete -serial-number 1-80-000011']
-      privilege: admin
-      <<: *login2
