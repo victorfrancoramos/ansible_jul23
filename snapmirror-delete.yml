@@ -19,7 +19,7 @@
     password: Netapp1!
     passphrase: Netapp123
   tasks:
-  - name: Set Timezone
+  - name: delete snapmirror relationships
     na_ontap_command:
       command: ['snapmirror delete *']
       privilege: admin
