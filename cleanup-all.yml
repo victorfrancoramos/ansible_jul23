@@ -141,7 +141,7 @@
      <<: *login1
   - name: remove interface n2 cluster1
     na_ontap_interface:
-     state: present
+     state: absent
      interface_name: peer-lif-n2
      vserver: cluster1
      <<: *login1
