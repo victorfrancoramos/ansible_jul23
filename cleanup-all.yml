@@ -6,9 +6,10 @@
   vars:
     vserver1: svm1
     vserver2: svm2
-    peer_cluster: cluster1
-    dest_hostname: 192.168.0.101
-    cluster: cluster2
+    dest_hostname1: 192.168.0.101
+    dest_hostname2: 192.168.0.102
+    cluster1: cluster1
+    cluster2: cluster2
     ntpservers: 192.168.0.253
     login1: &login1
      hostname: 192.168.0.101
@@ -32,16 +33,31 @@
     na_ontap_vserver_peer:
       state: absent
       peer_vserver: "{{ vserver1 }}"
-      peer_cluster: "{{ peer_cluster }}"
+      peer_cluster: "{{ cluster1 }}"
       vserver: "{{ vserver2 }}"
       applications: snapmirror
       <<: *login2
-  - name: remove cluster peering
+  - name: remove vserver peering
+    na_ontap_vserver_peer:
+      state: absent
+      peer_vserver: "{{ vserver2 }}"
+      peer_cluster: "{{ cluster2 }}"
+      vserver: "{{ vserver1 }}"
+      applications: snapmirror
+      <<: *login1
+  - name: remove cluster peering on cluster2
     na_ontap_cluster_peer:
       state: absent
-      dest_cluster_name: "{{ peer_cluster }}"
-      source_cluster_name: "{{ cluster }}"
-      dest_hostname: "{{ dest_hostname }}"
+      dest_cluster_name: "{{ cluster2 }}"
+      source_cluster_name: "{{ cluster1 }}"
+      dest_hostname: "{{ dest_hostname2 }}"
+      <<: *login2
+  - name: remove cluster peering on cluster1
+    na_ontap_cluster_peer:
+      state: absent
+      dest_cluster_name: "{{ cluster1 }}"
+      source_cluster_name: "{{ cluster2 }}"
+      dest_hostname: "{{ dest_hostname1 }}"
       <<: *login2
   - name: Gather facts
     na_ontap_info:
