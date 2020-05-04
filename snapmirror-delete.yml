@@ -23,7 +23,9 @@
     na_ontap_command:
       command: ['snapmirror delete *']
       privilege: admin
-      <<: *login
+      hostname: "{{ dst_ontap }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
   - name: Delete Snapmirror Destination Volume
     na_ontap_volume:
       state: absent
