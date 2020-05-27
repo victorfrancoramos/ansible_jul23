@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars_prompt:
+  vars:
+    input: &input
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_username }}"
+    file: globals.yml
+  vars_prompt
+     name: password      
+     prompt: “Password for {{netapp_username}}:”     
+     private: yes
+  tasks:
+  - name: Get Ontapi version
+   na_ontap_gather_facts:
+      state: info
+      <<: *input
+      https: true
+      ontapi: 32
+      validate_certs: false
+  - import_role:
+      name: na_ontap_san_create
+    vars:
+      <<: *input
+    when: luns != None
