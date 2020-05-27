@@ -4,12 +4,12 @@
   vars_prompt:
   vars:
     input: &input
-      hostname: "{{ netapp_hostname }}"
-      username: "{{ netapp_username }}"
+      hostname: "{{ hostname }}"
+      username: "{{ username }}"
     file: globals.yml
   vars_prompt
      name: password      
-     prompt: “Password for {{netapp_username}}:”     
+     prompt: “Password for {{username}}:”     
      private: yes
   tasks:
   - name: Get Ontapi version
