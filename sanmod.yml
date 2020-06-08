@@ -7,7 +7,7 @@
       hostname: "{{ PRI_CLU }}"
       username: "{{ PRI_CLU_USER }}"
       password: "{{ PRI_CLU_PASS }}"
-    file: globals.vars
+    file: globals.yml
   tasks:
   - import_role:
       name: na_ontap_san_create
