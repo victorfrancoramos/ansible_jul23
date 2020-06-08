@@ -4,13 +4,10 @@
   vars_prompt:
   vars:
     input: &input
-      hostname: "{{ hostname }}"
-      username: "{{ username }}"
-    file: globals.yml
-  vars_prompt
-     name: password      
-     prompt: “Password for {{username}}:”     
-     private: yes
+      hostname: "{{ PRI_CLU }}"
+      username: "{{ PRI_CLU_USER }}"
+      password: "{{ PRI_CLU_PASS }}"
+    file: globals.vars
   tasks:
   - name: Get Ontapi version
    na_ontap_gather_facts:
