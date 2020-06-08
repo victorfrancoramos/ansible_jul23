@@ -9,13 +9,6 @@
       password: "{{ PRI_CLU_PASS }}"
     file: globals.vars
   tasks:
-  - name: Get Ontapi version
-   na_ontap_gather_facts:
-      state: info
-      <<: *input
-      https: true
-      ontapi: 32
-      validate_certs: false
   - import_role:
       name: na_ontap_san_create
     vars:
