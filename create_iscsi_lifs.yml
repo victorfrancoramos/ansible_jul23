@@ -43,7 +43,7 @@
       netmask:               "{{ PRI_SVM_NETMASK }}"
       home_node:             "{{ PRI_CLU_NODE1 }}"
       home_port:             "{{ PRI_DATA_PORT }}"
-      protocols:			 iscsi
+      protocols:             iscsi
       <<: *input
       firewall_policy:       data
       role:                  data
@@ -56,7 +56,7 @@
       netmask:               "{{ PRI_SVM_NETMASK }}"
       home_node:             "{{ PRI_CLU_NODE2 }}"
       home_port:             "{{ PRI_DATA_PORT }}"
-      protocols:			 iscsi
+      protocols:             iscsi
       <<: *input
       firewall_policy:       data
       role:                  data
