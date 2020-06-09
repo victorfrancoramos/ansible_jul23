@@ -32,6 +32,8 @@
           hostname: "{{ PRI_CLU }}"
           username: "{{ PRI_CLU_USER }}"
           password: "{{ PRI_CLU_PASS }}"
+          https:          true
+          validate_certs: false
    - name: create_lun
      na_ontap_lun:
           name: "{{ LUN_NAME }}"
