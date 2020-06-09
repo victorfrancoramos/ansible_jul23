@@ -22,7 +22,7 @@
           name: "{{ igroup_name }}"
           initiator_group_type: iscsi
           ostype: windows
-          initiator: iqn.1994-05.com.redhat:scspa0395855001.rtp.openenglab.netapp.com
+          initiator: 
           vserver: "{{ vserver }}"
           hostname: "{{ netapp_hostname }}"
           username: "{{ netapp_username }}"
@@ -34,7 +34,7 @@
           size: 5
           size_unit: gb
           ostype: windows
-          space_reserve: True
+          space_reserve: false
           vserver: "{{ vserver }}"
           hostname: "{{ netapp_hostname }}"
           username: "{{ netapp_username }}"

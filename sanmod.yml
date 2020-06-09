@@ -1,7 +1,6 @@
 ---
 - hosts: localhost
   gather_facts: no
-  vars_prompt:
   vars:
     input: &input
       hostname: "{{ PRI_CLU }}"
