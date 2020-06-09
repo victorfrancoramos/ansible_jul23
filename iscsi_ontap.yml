@@ -1,6 +1,6 @@
 ############################################
 # NetApp Learning Services / 2020
-# global/private vars are in sanvars.yml
+# global/private vars are in global.yml
 # playbook specific vars are down below
 #############################################
 ---
@@ -19,38 +19,69 @@
     state: present
     https:          true
     validate_certs: false
-  name: create_lun_all
+  name: Create and Map a LUN
   tasks:
-   - name: create_igroup
+   - name: Create iGroup
      na_ontap_igroup:
-          state: present
-          name: "{{ IGROUP_NAME }}"
-          initiator_group_type: iscsi
-          ostype: windows
-          initiator: "{{ WIN_IQN }}"
-          vserver: "{{ PRI_SVM }}"
-          hostname: "{{ PRI_CLU }}"
-          username: "{{ PRI_CLU_USER }}"
-          password: "{{ PRI_CLU_PASS }}"
-          https:          true
-          validate_certs: false
-   - name: create_lun
+       state: present
+       name: "{{ IGROUP_NAME }}"
+       vserver: "{{ PRI_SVM }}"
+       initiator_group_type: iscsi
+       ostype: windows
+       initiator: "{{ WIN_IQN }}"
+       hostname: "{{ PRI_CLU }}"
+       username: "{{ PRI_CLU_USER }}"
+       password: "{{ PRI_CLU_PASS }}"
+       https: true
+       validate_certs: false
+     with_items:
+       "{{ igroups }}"
+    when: igroups != None
+   - name: Create volume
+     na_ontap_volume:
+       state: present
+       name: "{{ VOL_NAME }}"
+       aggregate_name: "{{ PRI_AGGR }}"
+       size: "{{ VOL_SIZE }}"
+       size_unit: gb
+       space_guarantee: none
+       vserver: "{{ PRI_SVM }}"
+       hostname: "{{ PRI_CLU }}"
+       username: "{{ PRI_CLU_USER }}"
+       password: "{{ PRI_CLU_PASS }}"
+       https: true
+       validate_certs: false
+     with_items:
+       "{{ luns }}"
+   - name: Lun Create
      na_ontap_lun:
-          name: "{{ LUN_NAME }}"
-          flexvol_name: "{{ VOL_NAME }}"
-          size: 5
-          size_unit: gb
-          ostype: windows
-          space_reserve: false
-          vserver: "{{ PRI_SVM }}"
-          hostname: "{{ PRI_CLU }}"
-          username: "{{ PRI_CLU_USER }}"
-          password: "{{ PRI_CLU_PASS }}"
-   - name: lun_map
+       state: present
+       name: "{{ LUN_NAME }}"
+       flexvol_name: "{{ VOL_NAME }}"
+       vserver: "{{ PRI_SVM }}"
+       size: "{{ LUN_SIZE }}"
+       size_unit: gb
+       ostype: windows
+       space_reserve: false
+       hostname: "{{ PRI_CLU }}"
+       username: "{{ PRI_CLU_USER }}"
+       password: "{{ PRI_CLU_PASS }}"
+       https: true
+       validate_certs: false
+     with_items:
+       "{{ luns }}"
+     when: luns != None
+   - name: Create LUN mapping
      na_ontap_lun_map:
-          initiator_group_name: "{{ IGROUP_NAME }}"
-          path:  /vol/{{ VOL_NAME }}/{{ LUN_NAME }}
-          vserver: "{{ PRI_SVM }}"
-          hostname: "{{ PRI_CLU }}"
-          username: "{{ PRI_CLU_USER }}"
-          password: "{{ PRI_CLU_PASS }}"
+       state: present
+       initiator_group_name: "{{ IGROUP_NAME }}"
+       path: "/vol/{{ VOL_NAME }}/{{ LUN_NAME }}"
+       vserver: "{{ PRI_SVM }}"
+       hostname: "{{ PRI_CLU }}"
+       username: "{{ PRI_CLU_USER }}"
+       password: "{{ PRI_CLU_PASS }}"
+       https: true
+       validate_certs: false
+     with_items:
+       "{{ luns }}"
+     when: luns != None
