@@ -17,6 +17,8 @@
     aggr: "{{ PRI_AGGR }}"
     policy: Default
     state: present
+    https:          true
+    validate_certs: false
   name: create_lun_all
   tasks:
    - name: create_igroup
