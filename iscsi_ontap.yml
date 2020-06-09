@@ -22,7 +22,7 @@
           name: "{{ igroup_name }}"
           initiator_group_type: iscsi
           ostype: windows
-          initiator: 
+          initiator: "{{ initiator }}"
           vserver: "{{ vserver }}"
           hostname: "{{ netapp_hostname }}"
           username: "{{ netapp_username }}"
