@@ -38,5 +38,5 @@
     na_ontap_iscsi:
       state:                 present
       vserver:               "{{ PRI_SVM }}"
-      iscsi:                 enabled
+      service_state:         enabled
       <<: *input
