@@ -57,3 +57,4 @@
 "SEC_ISCSI_IP": "192.168.0.242"
 "LUN_SIZE": "5"
 "igroups": "igroup1"
+"luns": "lun1"
