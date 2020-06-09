@@ -61,9 +61,9 @@ REST_RESPONSE=`curl -s \
   -H "$HEAD_APP" -H "$HEAD_AUTH" -X GET "$API"`
 
 echo -e "--> Printing LUN Map details"
-printf "%-20s %-20s %-20s %-20s\n" "SVM" "iGroup" "LUN" "Initiators"
-echo $REST_RESPONSE | jq -r '.records[] | [.svm.name, .igroup.name, .lun.name, .igroup.initiators] | @tsv' |
-  while IFS=$'\t' read -r SVM IGROUP LUN INITIATORS; do
-    printf "%-20s %-20s %-20s %-20s\n" $SVM $IGROUP $LUN $INITIATORS
+printf "%-20s %-20s %-20s %-20s\n" "SVM" "iGroup" "LUN" "OS Type"
+echo $REST_RESPONSE | jq -r '.records[] | [.svm.name, .igroup.name, .lun.name, .igroup.os_type] | @tsv' |
+  while IFS=$'\t' read -r SVM IGROUP LUN OS; do
+    printf "%-20s %-20s %-20s %-20s\n" $SVM $IGROUP $LUN $OS
   done
 echo -e ""
