@@ -9,6 +9,9 @@
   vars_files:
    global.yml
   vars:
+    hostname: "{{ PRI_CLU }}"
+    username: "{{ PRI_CLU_USER }}"
+    password: "{{ PRI_CLU_PASS }}"
     volname: "{{ VOL_NAME }}"
     vserver: "{{ PRI_SVM }}"
     aggr: "{{ PRI_AGGR }}"
