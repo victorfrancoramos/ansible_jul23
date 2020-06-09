@@ -1,8 +1,11 @@
-hostname: 192.168.0.101
-username: admin
+netapp_hostname: 192.168.0.101
+netapp_username: admin
+netapp_password: Netapp1!
+vserver: san_svm
+volname: san_vol
 igroups:
-  - { name: igroup1, vserver: san_vserver, group_type: iscsi, ostype: windows, initiator: 
-“<iqn or wwpn>” } # the quotes for iqn/wwpn are necessary because of the : in them.
+  - { name: igroup1, vserver: san_svm, group_type: iscsi, ostype: windows, initiator: 
+“iqn.1994-05.com.redhat:scspa0395855001.rtp.openenglab.netapp.com” } # the quotes for iqn/wwpn are necessary because of the : in them.
 luns:
- - { name: lun1, vol_name: lun_vol, vserver: san_vserver, size: 10, ostype: linux, 
+ - { name: lun1, volname: san_vol, vserver: san_vserver, size: 10, ostype: linux, 
 space_reserve: false, igroup: igroup1 }

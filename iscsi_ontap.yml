@@ -1,18 +1,18 @@
 ############################################
 # NetApp Learning Services / 2020
-# global/private vars are in vars.yml
+# global/private vars are in sanvars.yml
 # playbook specific vars are down below
 #############################################
 ---
 - hosts: localhost
   gather_facts: false
   vars_files:
-   vars.yml
+   sanvars.yml
   vars:
     volname: "{{ volname }}"
     vserver: "{{ vserver }}"
-    aggr: data_aggr
-    policy: ansiblePolicy
+    aggr: aggr1_cluster1_01
+    policy: Default
     state: present
   name: create_lun_all
   tasks:
@@ -21,7 +21,7 @@
           state: present
           name: "{{ igroup_name }}"
           initiator_group_type: iscsi
-          ostype: linux
+          ostype: windows
           initiator: iqn.1994-05.com.redhat:scspa0395855001.rtp.openenglab.netapp.com
           vserver: "{{ vserver }}"
           hostname: "{{ netapp_hostname }}"
@@ -33,7 +33,7 @@
           flexvol_name: "{{ volname }}"
           size: 5
           size_unit: gb
-          ostype: linux
+          ostype: windows
           space_reserve: True
           vserver: "{{ vserver }}"
           hostname: "{{ netapp_hostname }}"
