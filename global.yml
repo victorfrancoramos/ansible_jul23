@@ -53,3 +53,5 @@
 "WIN_IQN": "iqn.1991-05.com.microsoft:jumphost.demo.netapp.com"
 "LUN_NAME": "lun1"
 "IGROUP_NAME": "igroup1"
+"PRI_ISCSI_IP": "192.168.0.241"
+"SEC_ISCSI_IP": "192.168.0.242"
