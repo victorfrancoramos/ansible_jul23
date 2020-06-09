@@ -50,7 +50,6 @@
 "SEC_CLU_IC_NETMASK": "255.255.255.0"
 "SEC_CLU_DEFAULT_GW": "192.168.0.1"
 "vol_name": "san_vol"
-"igroups":
- - { name: igroup1, vserver: san_svm, group_type: iscsi, ostype: windows, initiator: “iqn.1991-05.com.microsoft:jumphost.demo.netapp.com” }
-"luns":
- - { name: lun1, vol_name: san_vol, vserver: san_svm, size: 10, ostype: linux, space_reserve: false, igroup: igroup1 }
+"WIN_IQN": "iqn.1991-05.com.microsoft:jumphost.demo.netapp.com"
+"LUN_NAME": "lun1"
+"IGROUP_NAME": "igroup1"

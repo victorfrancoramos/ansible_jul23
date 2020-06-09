@@ -7,11 +7,11 @@
 - hosts: localhost
   gather_facts: false
   vars_files:
-   sanvars.yml
+   global.yml
   vars:
-    volname: "{{ volname }}"
-    vserver: "{{ vserver }}"
-    aggr: aggr1_cluster1_01
+    volname: "{{ VOL_NAME }}"
+    vserver: "{{ PRI_SVM }}"
+    aggr: "{{ PRI_AGGR }}"
     policy: Default
     state: present
   name: create_lun_all
@@ -19,31 +19,31 @@
    - name: create_igroup
      na_ontap_igroup:
           state: present
-          name: "{{ igroup_name }}"
+          name: "{{ IGROUP_NAME }}"
           initiator_group_type: iscsi
           ostype: windows
-          initiator: "{{ initiator }}"
-          vserver: "{{ vserver }}"
-          hostname: "{{ netapp_hostname }}"
-          username: "{{ netapp_username }}"
-          password: "{{ netapp_password }}"
+          initiator: "{{ WIN_IQN }}"
+          vserver: "{{ PRI_SVM }}"
+          hostname: "{{ PRI_CLU }}"
+          username: "{{ PRI_CLU_USER }}"
+          password: "{{ PRI_CLU_PASS }}"
    - name: create_lun
      na_ontap_lun:
-          name: "{{ lun_name }}"
-          flexvol_name: "{{ volname }}"
+          name: "{{ LUN_NAME }}"
+          flexvol_name: "{{ VOL_NAME }}"
           size: 5
           size_unit: gb
           ostype: windows
           space_reserve: false
-          vserver: "{{ vserver }}"
-          hostname: "{{ netapp_hostname }}"
-          username: "{{ netapp_username }}"
-          password: "{{ netapp_password }}"
+          vserver: "{{ PRI_SVM }}"
+          hostname: "{{ PRI_CLU }}"
+          username: "{{ PRI_CLU_USER }}"
+          password: "{{ PRI_CLU_PASS }}"
    - name: lun_map
      na_ontap_lun_map:
-          initiator_group_name: "{{ igroup_name }}"
-          path:  /vol/{{ volname }}/{{ lun_name }}
-          vserver: "{{ vserver }}"
-          hostname: "{{ netapp_hostname }}"
-          username: "{{ netapp_username }}"
-          password: "{{ netapp_password }}"
+          initiator_group_name: "{{ IGROUP_NAME }}"
+          path:  /vol/{{ VOL_NAME }}/{{ LUN_NAME }}
+          vserver: "{{ PRI_SVM }}"
+          hostname: "{{ PRI_CLU }}"
+          username: "{{ PRI_CLU_USER }}"
+          password: "{{ PRI_CLU_PASS }}"
