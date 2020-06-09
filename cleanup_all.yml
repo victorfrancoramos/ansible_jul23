@@ -35,7 +35,7 @@
       validate_certs: false
       use_rest:       Never
   vars_files:
-    - ../global.vars
+    - global.vars
   collections:
     - netapp.ontap
 
