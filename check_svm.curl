@@ -1,29 +1,7 @@
 #!/usr/bin/env bash
 
-################################################################################
-#
-# Title:        02_get_svm_details.curl
-# Author:       Adrian Bronder
-# Date:         2020-03-16
-# Description:  Get SVM information
-#               with simple curl commands
-#
-# APIs:         /api/svm/svms
-#               /api/name-services/dns
-#               /api/protocols/cifs/services
-#               /api/protocols/nfs/services
-#
-# URLs:         https://docs.netapp.com/ontap-9/index.jsp
-#               https://<cluster>/docs/api
-#
-# Sample CLI call:
-# curl -X GET -u "<user>:<password>" "https://<cluster>/api/svm/svms" --insecure
-#
-################################################################################
-
-
 ### Step 1 - Read in global variables
-GLOBAL_VARS=$(dirname $0)/../global.vars
+GLOBAL_VARS=$(dirname $0)/global.vars
 eval "$(jq -r '. | to_entries | .[] | .key + "=\"" + .value + "\""' < $GLOBAL_VARS)"
 
 
@@ -111,9 +89,9 @@ REST_RESPONSE=`curl -s \
   -H "$HEAD_APP" -H "$HEAD_AUTH" -X GET "$API"`
 
 echo -e "--> Printing iSCSI details"
-printf "%-20s %-10s %-10s %-10s %-10s\n" "SVM" "State" "Enabled"
-echo $REST_RESPONSE | jq -r '.records[] | [.svm.name, .state, .enabled] | @tsv' |
-  while IFS=$'\t' read -r SVM STATE ENABLED; do
-    printf "%-20s %-10s %-10s %-10s %-10s\n" $SVM $STATE $ENABLED
+printf "%-20s %-40s %-20s\n" "SVM" "UUID" "Enabled"
+echo $REST_RESPONSE | jq -r '.records[] | [.svm.name, .svm.uuid, .enabled] | @tsv' |
+  while IFS=$'\t' read -r SVM UUID ENABLED; do
+    printf "%-20s %-40s %-20s\n" $SVM $UUID $ENABLED
   done
 echo -e ""
