@@ -36,7 +36,7 @@
        validate_certs: false
      with_items:
        "{{ igroups }}"
-    when: igroups != None
+     when: igroups != None
    - name: Create volume
      na_ontap_volume:
        state: present
