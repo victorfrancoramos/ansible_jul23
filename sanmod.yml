@@ -9,7 +9,7 @@
     file: globals.yml
   tasks:
   - import_role:
-      name: na_ontap_san_create
+      name: /root/.ansible/collections/ansible_collections/netapp/ontap/roles/na_ontap_san_create
     vars:
       <<: *input
     when: luns != None
