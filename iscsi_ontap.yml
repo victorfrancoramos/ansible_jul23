@@ -35,7 +35,7 @@
        https: true
        validate_certs: false
      with_items:
-       "{{ igroups }}"
+       "{{ IGROUP_NAME }}"
      when: igroups != None
    - name: Create volume
      na_ontap_volume:
