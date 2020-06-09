@@ -29,7 +29,7 @@
       validate_certs: false
       use_rest:       Always
   vars_files:
-    - global.vars
+    - global.yml
   collections:
     - netapp.ontap
 
