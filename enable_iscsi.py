@@ -43,7 +43,7 @@ iscsi = IscsiService.from_dict(
   },
   "enabled": "true",
   }
-})
+)
 
 print("--> Starting interface create operation")
 try:
