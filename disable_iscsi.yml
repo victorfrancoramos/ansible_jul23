@@ -34,7 +34,7 @@
     - netapp.ontap
 
   tasks:
-  - name: Enable iSCSI on primary SVM
+  - name: Disable iSCSI on primary SVM
     na_ontap_iscsi:
       state:                 absent
       vserver:               "{{ PRI_SVM }}"
