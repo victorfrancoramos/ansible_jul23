@@ -46,7 +46,7 @@
       <<: *input
      register: netapp
    
-   - name: Delete LUN mapping
+   - name: Unmap LUN
      na_ontap_lun_map:
        state: absent
        initiator_group_name: "{{ IGROUP_NAME }}"
@@ -60,13 +60,13 @@
      with_items:
        "{{ luns }}"
      when: luns != None
-   - name: Disable iSCSI on primary SVM
+   - name: Stop and Disable iSCSI
      na_ontap_iscsi:
       state:                 absent
       vserver:               "{{ PRI_SVM }}"
       service_state:         stopped
       <<: *input
-   - name: Lun Delete
+   - name: Delete the LUN
      na_ontap_lun:
        state: absent
        name: "{{ LUN_NAME }}"
@@ -80,7 +80,7 @@
      with_items:
        "{{ luns }}"
      when: luns != None
-   - name: Delete iGroup
+   - name: Delete the iGroup
      na_ontap_igroup:
        state: absent
        name: "{{ IGROUP_NAME }}"
@@ -93,7 +93,7 @@
        "{{ igroups }}"
      when: igroups != None
  
-   - name: Delete volumes of primary SVM
+   - name: Delete the FlexVols
      na_ontap_volume:
       state:           absent
       vserver:         "{{ PRI_SVM }}"
@@ -119,7 +119,7 @@
 #    when:
 #      - netapp.ontap_info.vserver_info[PRI_SVM] is defined
 
-   - name: Delete primary SVM
+   - name: Delete the SVM
      na_ontap_svm:
       state:                 absent
       name:                  "{{ PRI_SVM }}"
