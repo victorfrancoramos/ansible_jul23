@@ -39,7 +39,7 @@
     na_ontap_svm:
       state:                 present
       name:                  "{{ PRI_SVM }}"
-      root_volume_aggregate: "{{ PRI_AGGR }}"
+      root_volume_aggregate: "{{ PRI_AGGR_02 }}"
       comment:               Created with Ansible
       <<: *input
   
