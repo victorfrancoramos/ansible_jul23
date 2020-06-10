@@ -19,7 +19,7 @@
     state: absent
     https:          true
     validate_certs: false
-  name: Delete and Map a LUN
+  name: Delete and Unmap a LUN
   tasks:
    - name: Delete iGroup
      na_ontap_igroup:
