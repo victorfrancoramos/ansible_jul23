@@ -1,4 +1,3 @@
-#curl -X GET "https://cluster1.demo.netapp.com/api/cluster/metrics?return_timeout=15&return_records=true&interval=1d" -H "accept: application/json" -H "authorization: Basic YWRtaW46TmV0YXBwMSE="
 #!/usr/bin/env bash
 
 ### Step 1 - Read in global variables
@@ -21,7 +20,7 @@ REST_RESPONSE=`curl -s \
 
 echo -e "--> Printing Cluster Metrics"
 printf "%-20s %-15s %-10s %-30s\n" "Throughput" "IOPS" "Latency"
-echo -e $REST_RESPONSE | jq -r '.records[] | [.throughput.total, .iops.total, .latency.total] | @tsv' |
+echo -e $REST_RESPONSE | jq -r '.records[1] | [.throughput.total, .iops.total, .latency.total] | @tsv' |
   while IFS=$'\t' read -r Throughput IOPS Latency; do
     printf "%-20s %-15s %-15s\n" $Throughput $IOPS $Latency
   done
