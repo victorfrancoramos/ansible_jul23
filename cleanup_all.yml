@@ -52,11 +52,6 @@
        initiator_group_name: "{{ IGROUP_NAME }}"
        path: "/vol/{{ VOL_NAME }}/{{ LUN_NAME }}"
        vserver: "{{ PRI_SVM }}"
-       hostname: "{{ PRI_CLU }}"
-       username: "{{ PRI_CLU_USER }}"
-       password: "{{ PRI_CLU_PASS }}"
-       https: true
-       validate_certs: false
      with_items:
        "{{ luns }}"
      when: luns != None
@@ -76,11 +71,6 @@
        size_unit: gb
        ostype: windows
        space_reserve: false
-       hostname: "{{ PRI_CLU }}"
-       username: "{{ PRI_CLU_USER }}"
-       password: "{{ PRI_CLU_PASS }}"
-       https: true
-       validate_certs: false
      with_items:
        "{{ luns }}"
      when: luns != None
@@ -92,31 +82,9 @@
        initiator_group_type: iscsi
        ostype: windows
        initiator: "{{ WIN_IQN }}"
-       hostname: "{{ PRI_CLU }}"
-       username: "{{ PRI_CLU_USER }}"
-       password: "{{ PRI_CLU_PASS }}"
-       https: true
-       validate_certs: false
      with_items:
        "{{ igroups }}"
      when: igroups != None
-#   - name: Delete volume
-#     na_ontap_volume:
-#       state: absent
-#       name: "{{ VOL_NAME }}"
-#       aggregate_name: "{{ PRI_AGGR_02 }}"
-#       size: "{{ VOL_SIZE }}"
-#       size_unit: gb
-#       space_guarantee: none
-#       vserver: "{{ PRI_SVM }}"
-#       hostname: "{{ PRI_CLU }}"
-#       username: "{{ PRI_CLU_USER }}"
-#       password: "{{ PRI_CLU_PASS }}"
-#       https: true
-#       validate_certs: false
-#     with_items:
-#       "{{ luns }}"
-   
    - name: Delete volumes of primary SVM
      na_ontap_volume:
       state:           absent
