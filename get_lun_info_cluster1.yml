@@ -39,6 +39,7 @@
       <<: *input
       gather_subset:
       - lun_info
+      - igroup_info
     register: ontap_info
   - debug:
      msg: "{{ ontap_info.ontap_info }}"
