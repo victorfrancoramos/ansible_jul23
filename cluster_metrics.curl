@@ -1,5 +1,4 @@
-curl -X GET "https://cluster1.demo.netapp.com/api/cluster/metrics?return_timeout=15&return_records=true&interval=1d" -H "accept: application/json" -H "authorization: Basic YWRtaW46TmV0YXBwMSE="
-
+#curl -X GET "https://cluster1.demo.netapp.com/api/cluster/metrics?return_timeout=15&return_records=true&interval=1d" -H "accept: application/json" -H "authorization: Basic YWRtaW46TmV0YXBwMSE="
 #!/usr/bin/env bash
 
 ### Step 1 - Read in global variables
