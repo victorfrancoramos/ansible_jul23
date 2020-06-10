@@ -41,10 +41,10 @@
 
   tasks:
    - name: Get Ontap Info
-    na_ontap_info:
+     na_ontap_info:
       state:           info
       <<: *input
-    register: netapp
+     register: netapp
    
    - name: Delete LUN mapping
      na_ontap_lun_map:
@@ -60,8 +60,8 @@
      with_items:
        "{{ luns }}"
      when: luns != None
-    - name: Disable iSCSI on primary SVM
-    na_ontap_iscsi:
+   - name: Disable iSCSI on primary SVM
+     na_ontap_iscsi:
       state:                 absent
       vserver:               "{{ PRI_SVM }}"
       service_state:         stopped
