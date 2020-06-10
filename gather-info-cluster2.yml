@@ -15,7 +15,6 @@
       <<: *login
       gather_subset:
       - lun_info
-      - aggr_info
     register: ontap_info
   - debug:
      msg: "{{ ontap_info.ontap_info }}"
