@@ -28,7 +28,7 @@
       password:       "{{ PRI_CLU_PASS }}"
       https:          true
       validate_certs: false
-      use_rest:       Always
+#      use_rest:       Always
   vars_files:
     - global.vars
   collections:
