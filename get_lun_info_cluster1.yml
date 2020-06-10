@@ -36,7 +36,7 @@
   - name: gather info
     na_ontap_info:
       state: info
-      <<: *login
+      <<: *input
       gather_subset:
       - lun_info
     register: ontap_info
