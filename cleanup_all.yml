@@ -118,14 +118,14 @@
 #       "{{ luns }}"
    
    - name: Delete volumes of primary SVM
-    na_ontap_volume:
+     na_ontap_volume:
       state:           absent
       vserver:         "{{ PRI_SVM }}"
       name:            "{{ netapp.ontap_info.volume_info[item].volume_id_attributes.name }}"
       <<: *input
-    with_items:
+     with_items:
       "{{ netapp.ontap_info.volume_info }}"
-    when:
+     when:
       - netapp.ontap_info.volume_info[item].volume_id_attributes.owning_vserver_name == PRI_SVM
       - netapp.ontap_info.volume_info[item].volume_id_attributes.name is not regex(".*_root")
 
@@ -144,7 +144,7 @@
 #      - netapp.ontap_info.vserver_info[PRI_SVM] is defined
 
    - name: Delete primary SVM
-    na_ontap_svm:
+     na_ontap_svm:
       state:                 absent
       name:                  "{{ PRI_SVM }}"
       <<: *input
