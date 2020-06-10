@@ -2,10 +2,10 @@
 
 ################################################################################
 #
-# Title:	enable_iscsi_pri_svm.py
+# Title:	disable_iscsi_pri_svm.py
 # Author:	Ronald Feist
 # Date:		2020-06-10
-# Description:	Enable iSCSI on the Primary SVM
+# Description:	Disable iSCSI on the Primary SVM
 #		with ONTAP Python client library
 #
 # Resources:    netapp_ontap.resources.nfs_service
@@ -41,14 +41,14 @@ iscsi = IscsiService.from_dict(
   "svm": {
     "name": global_vars["PRI_SVM"]
   },
-  "enabled": "true",
+  "enabled": "false",
   }
 )
 
 print("--> Starting interface create operation")
 try:
 	iscsi.post()
-	print("--> iSCSI enabled successfully on SVM \"{}\"".format(iscsi.svm.name))
+	print("--> iSCSI disabled successfully on SVM \"{}\"".format(iscsi.svm.name))
 except NetAppRestError as err:
-	print("--> Error: iSCSI was not enabled:\n{}".format(err))
+	print("--> Error: iSCSI was not disabled:\n{}".format(err))
 print("")
