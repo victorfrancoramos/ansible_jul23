@@ -3,7 +3,7 @@
   name: Get Netapp info
   vars:
     login: &login
-     hostname: 192.168.0.102 # NetApp Cluster IP
+     hostname: 192.168.0.101 # NetApp Cluster IP
      username: admin # Cluster User
      password: Netapp1! # Cluster Password
      https: true
@@ -15,6 +15,7 @@
       <<: *login
       gather_subset:
       - lun_info
+      - aggr_info
     register: ontap_info
   - debug:
      msg: "{{ ontap_info.ontap_info }}"
