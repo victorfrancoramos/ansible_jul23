@@ -41,11 +41,11 @@ iscsi = IscsiService.from_dict(
   "svm": {
     "name": global_vars["PRI_SVM"]
   },
-  "enabled": "false",
+  "delete": "true",
   }
 )
 
-print("--> Starting interface create operation")
+print("--> Starting Service operation")
 try:
 	iscsi.post()
 	print("--> iSCSI disabled successfully on SVM \"{}\"".format(iscsi.svm.name))

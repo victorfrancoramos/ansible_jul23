@@ -45,7 +45,7 @@ iscsi = IscsiService.from_dict(
   }
 )
 
-print("--> Starting interface create operation")
+print("--> Starting Service operation")
 try:
 	iscsi.post()
 	print("--> iSCSI enabled successfully on SVM \"{}\"".format(iscsi.svm.name))
