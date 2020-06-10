@@ -42,12 +42,14 @@
       root_volume_aggregate: "{{ PRI_AGGR }}"
       comment:               Created with Ansible
       <<: *input
+  
   - name: Enable iSCSI on primary SVM
     na_ontap_iscsi:
       state:                 present
       vserver:               "{{ PRI_SVM }}"
       service_state:         started
       <<: *input
+  
   - name: Create iSCSI interface for node01
     na_ontap_interface:
       state:                 present
@@ -61,6 +63,7 @@
       <<: *input
       firewall_policy:       data
       role:                  data
+  
   - name: Create iSCSI interfaces for node02
     na_ontap_interface:
       state:                 present
@@ -74,6 +77,7 @@
       <<: *input
       firewall_policy:       data
       role:                  data
+  
   - name: Create iGroup
      na_ontap_igroup:
        state: present
@@ -90,7 +94,8 @@
      with_items:
        "{{ igroups }}"
      when: igroups != None
-   - name: Create volume
+   
+  - name: Create volume
      na_ontap_volume:
        state: present
        name: "{{ VOL_NAME }}"
@@ -106,7 +111,8 @@
        validate_certs: false
      with_items:
        "{{ luns }}"
-   - name: Lun Create
+   
+  - name: Lun Create
      na_ontap_lun:
        state: present
        name: "{{ LUN_NAME }}"
@@ -124,7 +130,8 @@
      with_items:
        "{{ luns }}"
      when: luns != None
-   - name: Create LUN mapping
+   
+  - name: Create LUN mapping
      na_ontap_lun_map:
        state: present
        initiator_group_name: "{{ IGROUP_NAME }}"
