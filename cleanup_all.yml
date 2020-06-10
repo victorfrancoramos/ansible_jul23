@@ -52,6 +52,11 @@
        initiator_group_name: "{{ IGROUP_NAME }}"
        path: "/vol/{{ VOL_NAME }}/{{ LUN_NAME }}"
        vserver: "{{ PRI_SVM }}"
+       hostname: "{{ PRI_CLU }}"
+       username: "{{ PRI_CLU_USER }}"
+       password: "{{ PRI_CLU_PASS }}"
+       https: true
+       validate_certs: false
      with_items:
        "{{ luns }}"
      when: luns != None
@@ -71,6 +76,7 @@
        size_unit: gb
        ostype: windows
        space_reserve: false
+       <<: *input
      with_items:
        "{{ luns }}"
      when: luns != None
@@ -82,9 +88,11 @@
        initiator_group_type: iscsi
        ostype: windows
        initiator: "{{ WIN_IQN }}"
+       <<: *input
      with_items:
        "{{ igroups }}"
      when: igroups != None
+ 
    - name: Delete volumes of primary SVM
      na_ontap_volume:
       state:           absent
