@@ -9,6 +9,7 @@
      password: Netapp1! # Cluster Password
      https: true
      validate_certs: false
+     use_rest: Always
     clustername: cluster2 # Cluster Name
     vols:
     - vol1

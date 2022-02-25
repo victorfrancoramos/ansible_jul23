@@ -24,7 +24,8 @@ from netapp_ontap.resources import Volume, CifsService, Svm
 
 
 ### Step 1 - Read in global variables
-with open(os.path.dirname(sys.argv[0])+'/global.vars') as json_file:
+print (os.path.dirname(sys.argv[0])+'global.vars')
+with open(os.path.dirname(sys.argv[0])+'global.vars') as json_file:
 	global_vars = json.load(json_file)
 
 

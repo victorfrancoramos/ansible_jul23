@@ -1,24 +1,23 @@
 ---
 - hosts: localhost
   gather_facts: false
-  name: NetApp cluster2 System Setup
+  name: NetApp Cluster1 System Setup
   vars:
     login: &login
-     hostname: 192.168.0.102 # NetApp Cluster IP
+     hostname: 192.168.0.101 # NetApp Cluster IP
      username: admin # Cluster User
      password: Netapp1! # Cluster Password
      https: true
      validate_certs: false
-     use_rest: Always
   vars_files:
-   - var_cluster2.yml
+   - var_cluster1.yml
   tasks:
-#  - name: Install Licenses
-#    na_ontap_cluster:
-#      state: present
-#      license_code: "{{ item }}"
-#      <<: *login
-#    with_items: "{{ licenses }}"
+  - name: Install Licenses
+    na_ontap_cluster:
+      state: present
+      license_code: "{{ item }}"
+      <<: *login
+    with_items: "{{ licenses }}"
   - name: Set NTP
     na_ontap_ntp:
       state: present
@@ -30,7 +29,7 @@
       command: ['time', '-timezone', 'Europe/Brussels']
       privilege: admin
       <<: *login
-  - name: Create and Online New Data Aggregate's
+  - name: Create and Online New Data Aggregate Node1
     na_ontap_aggregate:
       state: present
       service_state: online
@@ -45,21 +44,12 @@
     na_ontap_svm:
       state: present
       name: "{{ item.name }}"
-#      root_volume: "{{ item.rootvol }}"
-#      root_volume_aggregate: "{{ item.rootaggr }}"
+      root_volume: "{{ item.rootvol }}"
+      root_volume_aggregate: "{{ item.rootaggr }}"
       aggr_list: "{{ item.aggr_list }}"
       allowed_protocols: "{{ item.allowed_protocols }}"
       <<: *login
     with_items: "{{ svm }}"
-  - name: Create Subnet
-    na_ontap_net_subnet:
-      state: present
-      name: "{{ subnetname }}"
-      subnet: "{{ subnetnetwork }}"
-      ip_ranges: "{{ subnetiprange }}"
-      ipspace: Default
-      broadcast_domain: Default
-      <<: *login
   - name: Create NFS LIF Node1
     na_ontap_interface:
       state: present
@@ -69,12 +59,12 @@
       role: data
       protocols: nfs
       admin_status: up
-#      failover_policy: system-defined
-#      firewall_policy: data
-#      is_auto_revert: true
-#      subnet_name: "{{ subnetname }}"
-#      force_subnet_association: false
-#      dns_domain_name: test.com
+      failover_policy: system-defined
+      firewall_policy: data
+      is_auto_revert: true
+      subnet_name: "{{ subnetname }}"
+      force_subnet_association: false
+      dns_domain_name: test.com
       vserver: "{{ item.vserver }}"
       <<: *login
     with_items: "{{ lif }}"     
@@ -86,7 +76,7 @@
       nfsv3: enabled
       <<: *login
     with_items: "{{ svm }}"
-  - name: Create NFS Export Rule Under Default Policy
+  - name: Add NFS Export Rule Under Default Policy
     na_ontap_export_policy_rule:
       state: present
       name: default
@@ -97,14 +87,14 @@
       protocol: nfs
       super_user_security: any
       <<: *login
-    with_items: "{{ svm }}"  
-  - name: Add DNS Settings to SVM
+    with_items: "{{ svm }}"
+  - name: Add DNS Settings to svm
     na_ontap_dns:
       state: present
       vserver: "{{ item.name }}"
       domains: "{{ item.domain }}"
       nameservers: "{{ item.dns_servers }}"
-#      skip_validation: true
+      skip_validation: true
       <<: *login
     with_items: "{{ svm }}"
   - name: Create Volumes
@@ -120,6 +110,6 @@
       percent_snapshot_space: 0
       space_guarantee: none
       volume_security_style: "{{ item.security_style }}"
-#      wait_for_completion: true
+      wait_for_completion: true
       <<: *login
     with_items: "{{ vols }}"  

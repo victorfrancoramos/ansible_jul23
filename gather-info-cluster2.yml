@@ -1,25 +1,18 @@
 ---
 - hosts: localhost
-  name: Get ONTAP Cluster Information
+  name: Get Netapp info
   vars:
-    input: &input
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      validate_certs: false
-      use_rest:       Always
-  vars_files:
-    - global.vars
-  collections:
-    - netapp.ontap
+    login: &login
+     hostname: 192.168.0.102 # NetApp Cluster IP
+     username: admin # Cluster User
+     password: Netapp1! # Cluster Password
+     https: true
+     validate_certs: false
   tasks:
   - name: gather info
     na_ontap_info:
       state: info
       <<: *login
-      gather_subset:
-      - lun_info
     register: ontap_info
   - debug:
      msg: "{{ ontap_info.ontap_info }}"

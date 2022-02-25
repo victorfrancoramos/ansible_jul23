@@ -9,15 +9,16 @@
      password: Netapp1! # Cluster Password
      https: true
      validate_certs: false
+     use_rest: Always
   vars_files:
    - var_cluster1.yml
   tasks:
-  - name: Install Licenses
-    na_ontap_cluster:
-      state: present
-      license_code: "{{ item }}"
-      <<: *login
-    with_items: "{{ licenses }}"
+#  - name: Install Licenses
+#    na_ontap_cluster:
+#      state: present
+#      license_code: "{{ item }}"
+#      <<: *login
+#    with_items: "{{ licenses }}"
   - name: Set NTP
     na_ontap_ntp:
       state: present
@@ -44,8 +45,8 @@
     na_ontap_svm:
       state: present
       name: "{{ item.name }}"
-      root_volume: "{{ item.rootvol }}"
-      root_volume_aggregate: "{{ item.rootaggr }}"
+#      root_volume: "{{ item.rootvol }}"
+#      root_volume_aggregate: "{{ item.rootaggr }}"
       aggr_list: "{{ item.aggr_list }}"
       allowed_protocols: "{{ item.allowed_protocols }}"
       <<: *login
@@ -59,12 +60,12 @@
       role: data
       protocols: nfs
       admin_status: up
-      failover_policy: system-defined
-      firewall_policy: data
-      is_auto_revert: true
-      subnet_name: "{{ subnetname }}"
-      force_subnet_association: false
-      dns_domain_name: test.com
+#      failover_policy: system-defined
+#      firewall_policy: data
+#      is_auto_revert: true
+#      subnet_name: "{{ subnetname }}"
+#      force_subnet_association: false
+#      dns_domain_name: test.com
       vserver: "{{ item.vserver }}"
       <<: *login
     with_items: "{{ lif }}"     
@@ -94,7 +95,7 @@
       vserver: "{{ item.name }}"
       domains: "{{ item.domain }}"
       nameservers: "{{ item.dns_servers }}"
-      skip_validation: true
+#      skip_validation: true
       <<: *login
     with_items: "{{ svm }}"
   - name: Create Volumes
