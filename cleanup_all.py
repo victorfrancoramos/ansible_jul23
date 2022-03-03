@@ -20,7 +20,7 @@
 
 import json, os, sys, logging
 from netapp_ontap import config, HostConnection, NetAppRestError
-from netapp_ontap.resources import Volume, CifsService, Svm
+from netapp_ontap.resources import Volume, CifsService, Svm, Igroup
 
 
 ### Step 1 - Read in global variables
@@ -36,7 +36,6 @@ config.CONNECTION = HostConnection(
 	password=global_vars["PRI_CLU_PASS"],
 	verify=False
 )
-
 
 ### Step 3 - Delete operation
 # Volume
@@ -68,10 +67,14 @@ except NetAppRestError as err:
 print("")
 
 # IGROUP
-#print("--> Starting igroup delete operation")
-# igroup = Igroup.find(name="igroup2")
-#try:
-# igroup.delete()
+print("--> Starting igroup delete operation")
+try:
+	igroup = Igroup.find(name="igroup2")
+	igroup.delete()
+	print ("--> Igroup deleted successfully".format(igroup.name))
+except  NetAppRestError as err:
+	("--> Error: Igroup was not deleted:\n".format(err))
+print("")
 
 # SVM
 print("--> Starting SVM delete operation")
