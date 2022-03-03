@@ -1,5 +1,5 @@
 {
-	"PRI_CLU":		"cluster1.demo.netapp.com",
+	"PRI_CLU":		"cluster1.demo.netapp.com", 
 	"PRI_CLU_USER":		"admin",
 	"PRI_CLU_PASS":		"Netapp1!",
 	"PRI_CLU_NODE1":	"cluster1-01",
