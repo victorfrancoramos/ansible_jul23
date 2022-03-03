@@ -1,4 +1,3 @@
----
 #!/usr/bin/env ansible-playbook
 
 ################################################################################
@@ -32,9 +31,9 @@
       hostname:       "{{ PRI_CLU }}"
       username:       "{{ PRI_CLU_USER }}"
       password:       "{{ PRI_CLU_PASS }}"
-      https: true
+      https:          true
       validate_certs: false
-      use_rest: Always
+      use_rest:       Always
   vars_files:
     - global.vars
   collections:
@@ -43,7 +42,7 @@
   tasks:
     - name: Get Ontap Info
       na_ontap_info:
-        state:
+        state:           info
         <<: *input
       register: netapp
    
@@ -52,7 +51,6 @@
         state: absent
         initiator_group_name: "{{ IGROUP_NAME }}"
         path: "/vol/{{ VOL_NAME }}/{{ LUN_NAME }}"
-        https: true
         vserver: "{{ PRI_SVM }}"
         hostname: "{{ PRI_CLU }}"
         username: "{{ PRI_CLU_USER }}"

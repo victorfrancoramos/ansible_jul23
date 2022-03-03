@@ -67,6 +67,12 @@ except NetAppRestError as err:
 	print("--> Error: CIFS server was not deleted:\n{}".format(err))
 print("")
 
+# IGROUP
+#print("--> Starting igroup delete operation")
+# igroup = Igroup.find(name="igroup2")
+#try:
+# igroup.delete()
+
 # SVM
 print("--> Starting SVM delete operation")
 try:

@@ -43,7 +43,7 @@
       size_unit:             mb
       aggregate_name:        "{{ PRI_AGGR }}"
       comment:               Created with Ansible
-      space_guarantee:       volume
+#      space_guarantee:       volume
       policy:                default
       junction_path:         "/{{ PRI_SVM }}_nfs_01"
       volume_security_style: unix

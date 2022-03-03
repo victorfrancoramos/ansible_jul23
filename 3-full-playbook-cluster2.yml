@@ -64,6 +64,8 @@
     na_ontap_interface:
       state: present
       interface_name: "{{ item.name }}"
+      address: "{{ item.ip_addr }}"
+      netmask: "{{ item.netmask }}"
       home_port: "{{ item.home }}"
       home_node: "{{ item.node }}"
       role: data

@@ -24,10 +24,14 @@ svm:
    domain: demo.netapp.com
 lif:
  - name: nfs_lif01
+   ip_addr: 192.168.0.141
+   netmask: 255.255.255.0
    node: cluster1-01
    vserver: svm1
    home: e0c
  - name: nfs_lif02
+   ip_addr: 192.168.0.142
+   netmask: 255.255.255.0
    node: cluster1-02
    vserver: svm1
    home: e0c
