@@ -45902,3 +45902,53 @@ The offending line appears to be:
 2022-03-03 19:29:03,453 p=13714 u=root n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "msg": "Error in delete: calling: svm/svms/912139f9-9b1e-11ec-8795-005056b0ba19: got {'message': 'Failed to delete SVM san_svm. Reason: Cannot delete SVM \"san_svm\" because there are objects associated with the SVM that are not associated with any other SVM:\\nVolumes: 1\\nMirrors: 0\\nKerberos-enabled LIFs: 0\\nObject Stores: 0\\nSAN Initiator Groups: 1\\nRemove these objects, then try the command again. ', 'code': '2621467'}."}
 2022-03-03 19:29:03,455 p=13714 u=root n=ansible | PLAY RECAP ************************************************************************************
 2022-03-03 19:29:03,455 p=13714 u=root n=ansible | localhost                  : ok=6    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-03-09 22:25:43,364 p=8829 u=root n=ansible | PLAY [Create and Map a LUN] *************************************************************************************************************************************************
+2022-03-09 22:25:44,490 p=8829 u=root n=ansible | TASK [Create iGroup] ********************************************************************************************************************************************************
+2022-03-09 22:25:44,492 p=8829 u=root n=ansible | failed: [localhost] (item=igroup1) => {"ansible_loop_var": "item", "changed": false, "item": "igroup1", "msg": "Error: calling: protocols/san/igroups: got {'message': 'SVM \"san_svm\" does not exist. ', 'code': '2621462', 'target': 'svm.name'}."}
+2022-03-09 22:25:44,498 p=8829 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
+2022-03-09 22:25:44,498 p=8829 u=root n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-03-09 22:39:17,596 p=9435 u=root n=ansible | PLAY [localhost] ************************************************************************************************************************************************************
+2022-03-09 22:39:20,245 p=9435 u=root n=ansible | TASK [Create primary SVM] ***************************************************************************************************************************************************
+2022-03-09 22:39:20,246 p=9435 u=root n=ansible | [WARNING]: Falling back to ZAPI because of unsupported option(s) or option value(s) in REST: ['root_volume_aggregate']
+
+2022-03-09 22:39:20,246 p=9435 u=root n=ansible | changed: [localhost]
+2022-03-09 22:39:20,254 p=9435 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
+2022-03-09 22:39:20,254 p=9435 u=root n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-03-09 22:39:45,635 p=9521 u=root n=ansible | PLAY [localhost] ************************************************************************************************************************************************************
+2022-03-09 22:39:46,498 p=9521 u=root n=ansible | TASK [Enable iSCSI on primary SVM] ******************************************************************************************************************************************
+2022-03-09 22:39:46,498 p=9521 u=root n=ansible | changed: [localhost]
+2022-03-09 22:39:46,507 p=9521 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
+2022-03-09 22:39:46,507 p=9521 u=root n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-03-09 22:40:08,936 p=9621 u=root n=ansible | PLAY [localhost] ************************************************************************************************************************************************************
+2022-03-09 22:40:10,042 p=9621 u=root n=ansible | TASK [Create iSCSI interface for node01] ************************************************************************************************************************************
+2022-03-09 22:40:10,043 p=9621 u=root n=ansible | changed: [localhost]
+2022-03-09 22:40:10,928 p=9621 u=root n=ansible | TASK [Create iSCSI interfaces for node02] ***********************************************************************************************************************************
+2022-03-09 22:40:10,928 p=9621 u=root n=ansible | changed: [localhost]
+2022-03-09 22:40:10,937 p=9621 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
+2022-03-09 22:40:10,937 p=9621 u=root n=ansible | localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-03-09 22:40:35,869 p=9745 u=root n=ansible | PLAY [Create and Map a LUN] *************************************************************************************************************************************************
+2022-03-09 22:40:36,570 p=9745 u=root n=ansible | TASK [Create iGroup] ********************************************************************************************************************************************************
+2022-03-09 22:40:36,571 p=9745 u=root n=ansible | changed: [localhost] => (item=igroup1)
+2022-03-09 22:40:38,079 p=9745 u=root n=ansible | TASK [Create volume] ********************************************************************************************************************************************************
+2022-03-09 22:40:38,079 p=9745 u=root n=ansible | changed: [localhost] => (item=lun1)
+2022-03-09 22:40:38,082 p=9745 u=root n=ansible | [WARNING]: Falling back to ZAPI as REST support for na_ontap_volume is in beta and use_rest: auto.  Set use_rest: always to force REST.
+
+2022-03-09 22:40:39,002 p=9745 u=root n=ansible | TASK [Lun Create] ***********************************************************************************************************************************************************
+2022-03-09 22:40:39,002 p=9745 u=root n=ansible | changed: [localhost] => (item=lun1)
+2022-03-09 22:40:39,662 p=9745 u=root n=ansible | TASK [Create LUN mapping] ***************************************************************************************************************************************************
+2022-03-09 22:40:39,662 p=9745 u=root n=ansible | changed: [localhost] => (item=lun1)
+2022-03-09 22:40:39,671 p=9745 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
+2022-03-09 22:40:39,672 p=9745 u=root n=ansible | localhost                  : ok=4    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-03-09 23:16:26,077 p=11315 u=root n=ansible | PLAY [Create and Map a LUN] *************************************************************************************************************************************************
+2022-03-09 23:16:26,749 p=11315 u=root n=ansible | TASK [Create iGroup] ********************************************************************************************************************************************************
+2022-03-09 23:16:26,750 p=11315 u=root n=ansible | ok: [localhost] => (item=igroup1)
+2022-03-09 23:16:27,497 p=11315 u=root n=ansible | TASK [Create volume] ********************************************************************************************************************************************************
+2022-03-09 23:16:27,497 p=11315 u=root n=ansible | ok: [localhost] => (item=lun1)
+2022-03-09 23:16:27,499 p=11315 u=root n=ansible | [WARNING]: Falling back to ZAPI as REST support for na_ontap_volume is in beta and use_rest: auto.  Set use_rest: always to force REST.
+
+2022-03-09 23:16:28,153 p=11315 u=root n=ansible | TASK [Lun Create] ***********************************************************************************************************************************************************
+2022-03-09 23:16:28,153 p=11315 u=root n=ansible | ok: [localhost] => (item=lun1)
+2022-03-09 23:16:28,740 p=11315 u=root n=ansible | TASK [Create LUN mapping] ***************************************************************************************************************************************************
+2022-03-09 23:16:28,740 p=11315 u=root n=ansible | ok: [localhost] => (item=lun1)
+2022-03-09 23:16:28,749 p=11315 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
+2022-03-09 23:16:28,749 p=11315 u=root n=ansible | localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
