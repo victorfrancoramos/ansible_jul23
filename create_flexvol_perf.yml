@@ -3,7 +3,7 @@
 ################################################################################
 #
 # Title:        vol_create_by_iops.yml
-# Author:       Adrian Bronder and Curtis Burchett
+# Author:       Adrian Bronder, Curtis Burchett Vish Hulikal
 # Date:         2022-02-24
 # Description:  Create volume on aggregate with lowest IO utilization
 #               with Ansible modules
@@ -70,7 +70,7 @@
     with_items:
       "{{ na_vol.ontap_info['storage/volumes']['records'] }}"
     when:
-      item.svm.name == "PRI_SVM"
+      item.svm.name == "PRI_SVM2"
 
   - name: Provision volume on selected aggregate
     na_ontap_volume:
