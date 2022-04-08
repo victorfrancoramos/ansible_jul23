@@ -45952,3 +45952,370 @@ The offending line appears to be:
 2022-03-09 23:16:28,740 p=11315 u=root n=ansible | ok: [localhost] => (item=lun1)
 2022-03-09 23:16:28,749 p=11315 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************************************************
 2022-03-09 23:16:28,749 p=11315 u=root n=ansible | localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-04 19:12:03,000 p=7482 u=root n=ansible | [WARNING]: module na-ontap_user not found in:
+/root/.ansible/plugins/modules:/usr/share/ansible/plugins/modules:/usr/local/lib/python3.8/site-
+packages/ansible/modules
+
+2022-04-07 22:06:39,901 p=4390 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:06:42,335 p=4390 u=root n=ansible | TASK [Create primary SVM] ***************************************************************************
+2022-04-07 22:06:42,336 p=4390 u=root n=ansible | [WARNING]: Falling back to ZAPI because of unsupported option(s) or option value(s) in REST:
+['root_volume_aggregate']
+
+2022-04-07 22:06:42,336 p=4390 u=root n=ansible | changed: [localhost]
+2022-04-07 22:06:42,344 p=4390 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:06:42,344 p=4390 u=root n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:07:55,648 p=4492 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:07:56,609 p=4492 u=root n=ansible | TASK [Enable iSCSI on primary SVM] ******************************************************************
+2022-04-07 22:07:56,610 p=4492 u=root n=ansible | changed: [localhost]
+2022-04-07 22:07:56,618 p=4492 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:07:56,618 p=4492 u=root n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:08:33,668 p=4583 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:08:34,936 p=4583 u=root n=ansible | TASK [Create iSCSI interface for node01] ************************************************************
+2022-04-07 22:08:34,937 p=4583 u=root n=ansible | changed: [localhost]
+2022-04-07 22:08:35,974 p=4583 u=root n=ansible | TASK [Create iSCSI interfaces for node02] ***********************************************************
+2022-04-07 22:08:35,975 p=4583 u=root n=ansible | changed: [localhost]
+2022-04-07 22:08:35,983 p=4583 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:08:35,983 p=4583 u=root n=ansible | localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:09:01,052 p=4680 u=root n=ansible | Starting galaxy collection install process
+2022-04-07 22:09:01,053 p=4680 u=root n=ansible | Process install dependency map
+2022-04-07 22:09:01,053 p=4680 u=root n=ansible | |
+2022-04-07 22:09:01,154 p=4680 u=root n=ansible | /
+2022-04-07 22:09:01,254 p=4680 u=root n=ansible | -
+2022-04-07 22:09:01,355 p=4680 u=root n=ansible | \
+2022-04-07 22:09:01,455 p=4680 u=root n=ansible | |
+2022-04-07 22:09:01,556 p=4680 u=root n=ansible | /
+2022-04-07 22:09:01,656 p=4680 u=root n=ansible | -
+2022-04-07 22:09:01,757 p=4680 u=root n=ansible | \
+2022-04-07 22:09:01,857 p=4680 u=root n=ansible | |
+2022-04-07 22:09:01,957 p=4680 u=root n=ansible | /
+2022-04-07 22:09:02,058 p=4680 u=root n=ansible | Starting collection install process
+2022-04-07 22:09:02,059 p=4680 u=root n=ansible | |
+2022-04-07 22:09:02,059 p=4680 u=root n=ansible | Downloading https://galaxy.ansible.com/download/netapp-ontap-21.17.2.tar.gz to /root/.ansible/tmp/ansible-local-4680t95retxu/tmpjl8c2hm0/netapp-ontap-21.17.2-cha3iucs
+2022-04-07 22:09:02,159 p=4680 u=root n=ansible | /
+2022-04-07 22:09:02,260 p=4680 u=root n=ansible | -
+2022-04-07 22:09:02,360 p=4680 u=root n=ansible | \
+2022-04-07 22:09:02,462 p=4680 u=root n=ansible | Installing 'netapp.ontap:21.17.2' to '/root/.ansible/collections/ansible_collections/netapp/ontap'
+2022-04-07 22:09:02,462 p=4680 u=root n=ansible | |
+2022-04-07 22:09:02,563 p=4680 u=root n=ansible | /
+2022-04-07 22:09:02,663 p=4680 u=root n=ansible | -
+2022-04-07 22:09:02,765 p=4680 u=root n=ansible | \
+2022-04-07 22:09:02,865 p=4680 u=root n=ansible | netapp.ontap:21.17.2 was installed successfully
+2022-04-07 22:09:19,592 p=4690 u=root n=ansible | ansible-playbook [core 2.12.3]
+  config file = /root/ansible-workshop/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.8/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.8.3 (default, Jun 18 2020, 19:10:56) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+  jinja version = 3.0.3
+  libyaml = True
+2022-04-07 22:09:19,592 p=4690 u=root n=ansible | Using /root/ansible-workshop/ansible.cfg as config file
+2022-04-07 22:09:19,599 p=4690 u=root n=ansible | host_list declined parsing /root/ansible-workshop/hosts as it did not pass its verify_file() method
+2022-04-07 22:09:19,599 p=4690 u=root n=ansible | script declined parsing /root/ansible-workshop/hosts as it did not pass its verify_file() method
+2022-04-07 22:09:19,599 p=4690 u=root n=ansible | auto declined parsing /root/ansible-workshop/hosts as it did not pass its verify_file() method
+2022-04-07 22:09:19,604 p=4690 u=root n=ansible | Parsed /root/ansible-workshop/hosts inventory source with ini plugin
+2022-04-07 22:09:19,717 p=4690 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_igroup to netapp.ontap.na_ontap_igroup
+2022-04-07 22:09:19,723 p=4690 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_volume to netapp.ontap.na_ontap_volume
+2022-04-07 22:09:19,724 p=4690 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_lun to netapp.ontap.na_ontap_lun
+2022-04-07 22:09:19,725 p=4690 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_lun_map to netapp.ontap.na_ontap_lun_map
+2022-04-07 22:09:19,742 p=4690 u=root n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2022-04-07 22:09:19,742 p=4690 u=root n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2022-04-07 22:09:19,742 p=4690 u=root n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2022-04-07 22:09:19,742 p=4690 u=root n=ansible | PLAYBOOK: iscsi_ontap.yml ***************************************************************************
+2022-04-07 22:09:19,742 p=4690 u=root n=ansible | 1 plays in iscsi_ontap.yml
+2022-04-07 22:09:19,744 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:19,745 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:19,746 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:19,747 p=4690 u=root n=ansible | PLAY [Create and Map a LUN] *************************************************************************
+2022-04-07 22:09:19,756 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:19,756 p=4690 u=root n=ansible | META: ran handlers
+2022-04-07 22:09:19,759 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:19,784 p=4697 u=root n=ansible | <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2022-04-07 22:09:19,784 p=4697 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2022-04-07 22:09:19,791 p=4697 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311 `" && echo ansible-tmp-1649369359.7913492-4697-245336227158311="` echo /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311 `" ) && sleep 0'
+2022-04-07 22:09:19,804 p=4697 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_igroup to netapp.ontap.na_ontap_igroup
+2022-04-07 22:09:19,993 p=4697 u=root n=ansible | Using module file /root/.ansible/collections/ansible_collections/netapp/ontap/plugins/modules/na_ontap_igroup.py
+2022-04-07 22:09:19,994 p=4697 u=root n=ansible | <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-46909x0wobex/tmpvt01m1mu TO /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311/AnsiballZ_na_ontap_igroup.py
+2022-04-07 22:09:19,994 p=4697 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311/ /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311/AnsiballZ_na_ontap_igroup.py && sleep 0'
+2022-04-07 22:09:20,001 p=4697 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '/usr/local/bin/python3.8 /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311/AnsiballZ_na_ontap_igroup.py && sleep 0'
+2022-04-07 22:09:20,483 p=4697 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1649369359.7913492-4697-245336227158311/ > /dev/null 2>&1 && sleep 0'
+2022-04-07 22:09:20,494 p=4690 u=root n=ansible | TASK [Create iGroup] ********************************************************************************
+2022-04-07 22:09:20,495 p=4690 u=root n=ansible | changed: [localhost] => (item=igroup1) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "current": null,
+    "invocation": {
+        "module_args": {
+            "bind_portset": null,
+            "cert_filepath": null,
+            "feature_flags": {},
+            "force_remove_initiator": false,
+            "from_name": null,
+            "hostname": "cluster1.demo.netapp.com",
+            "http_port": null,
+            "https": true,
+            "igroups": null,
+            "initiator": "iqn.1991-05.com.microsoft:jumphost.demo.netapp.com",
+            "initiator_group_type": "iscsi",
+            "initiator_names": [
+                "iqn.1991-05.com.microsoft:jumphost.demo.netapp.com"
+            ],
+            "initiator_objects": null,
+            "key_filepath": null,
+            "name": "igroup1",
+            "ontapi": null,
+            "os_type": "windows",
+            "ostype": "windows",
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+            "state": "present",
+            "use_rest": "auto",
+            "username": "admin",
+            "validate_certs": false,
+            "vserver": "san_svm"
+        }
+    },
+    "item": "igroup1",
+    "modify": "None"
+}
+2022-04-07 22:09:20,500 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:20,522 p=4718 u=root n=ansible | <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2022-04-07 22:09:20,522 p=4718 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2022-04-07 22:09:20,529 p=4718 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277 `" && echo ansible-tmp-1649369360.5287797-4718-75114748223277="` echo /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277 `" ) && sleep 0'
+2022-04-07 22:09:20,539 p=4718 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_volume to netapp.ontap.na_ontap_volume
+2022-04-07 22:09:20,746 p=4718 u=root n=ansible | Using module file /root/.ansible/collections/ansible_collections/netapp/ontap/plugins/modules/na_ontap_volume.py
+2022-04-07 22:09:20,747 p=4718 u=root n=ansible | <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-46909x0wobex/tmpjgm1x43d TO /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277/AnsiballZ_na_ontap_volume.py
+2022-04-07 22:09:20,747 p=4718 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277/ /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277/AnsiballZ_na_ontap_volume.py && sleep 0'
+2022-04-07 22:09:20,756 p=4718 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '/usr/local/bin/python3.8 /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277/AnsiballZ_na_ontap_volume.py && sleep 0'
+2022-04-07 22:09:22,039 p=4718 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1649369360.5287797-4718-75114748223277/ > /dev/null 2>&1 && sleep 0'
+2022-04-07 22:09:22,051 p=4690 u=root n=ansible | TASK [Create volume] ********************************************************************************
+2022-04-07 22:09:22,052 p=4690 u=root n=ansible | changed: [localhost] => (item=lun1) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aggr_list": null,
+            "aggr_list_multiplier": null,
+            "aggregate_name": "aggr1_cluster1_01_data",
+            "atime_update": null,
+            "auto_provision_as": null,
+            "auto_remap_luns": null,
+            "cert_filepath": null,
+            "check_interval": 30,
+            "comment": null,
+            "compression": null,
+            "cutover_action": null,
+            "efficiency_policy": null,
+            "encrypt": null,
+            "export_policy": null,
+            "feature_flags": {},
+            "force_restore": null,
+            "force_unmap_luns": null,
+            "from_name": null,
+            "from_vserver": null,
+            "group_id": null,
+            "hostname": "cluster1.demo.netapp.com",
+            "http_port": null,
+            "https": true,
+            "inline_compression": null,
+            "is_infinite": false,
+            "is_online": true,
+            "junction_path": null,
+            "key_filepath": null,
+            "language": null,
+            "logical_space_enforcement": null,
+            "logical_space_reporting": null,
+            "name": "san_vol",
+            "nas_application_template": null,
+            "nvfail_enabled": null,
+            "ontapi": null,
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+            "percent_snapshot_space": null,
+            "preserve_lun_ids": null,
+            "qos_adaptive_policy_group": null,
+            "qos_policy_group": null,
+            "size": 10,
+            "size_change_threshold": 10,
+            "size_unit": "gb",
+            "sizing_method": null,
+            "snapdir_access": null,
+            "snapshot_auto_delete": null,
+            "snapshot_policy": null,
+            "snapshot_restore": null,
+            "space_guarantee": "none",
+            "space_slo": null,
+            "state": "present",
+            "tiering_minimum_cooling_days": null,
+            "tiering_policy": null,
+            "time_out": 180,
+            "type": null,
+            "unix_permissions": null,
+            "use_rest": "auto",
+            "user_id": null,
+            "username": "admin",
+            "validate_certs": false,
+            "volume_security_style": null,
+            "vserver": "san_svm",
+            "vserver_dr_protection": null,
+            "wait_for_completion": false
+        }
+    },
+    "item": "lun1",
+    "warnings": [
+        "Falling back to ZAPI as REST support for na_ontap_volume is in beta and use_rest: auto.  Set use_rest: always to force REST."
+    ]
+}
+2022-04-07 22:09:22,053 p=4690 u=root n=ansible | [WARNING]: Falling back to ZAPI as REST support for na_ontap_volume is in beta and use_rest: auto.
+Set use_rest: always to force REST.
+
+2022-04-07 22:09:22,056 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:22,082 p=4749 u=root n=ansible | <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2022-04-07 22:09:22,082 p=4749 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2022-04-07 22:09:22,089 p=4749 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756 `" && echo ansible-tmp-1649369362.0888004-4749-53683308403756="` echo /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756 `" ) && sleep 0'
+2022-04-07 22:09:22,099 p=4749 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_lun to netapp.ontap.na_ontap_lun
+2022-04-07 22:09:22,288 p=4749 u=root n=ansible | Using module file /root/.ansible/collections/ansible_collections/netapp/ontap/plugins/modules/na_ontap_lun.py
+2022-04-07 22:09:22,288 p=4749 u=root n=ansible | <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-46909x0wobex/tmpj3dhmojl TO /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756/AnsiballZ_na_ontap_lun.py
+2022-04-07 22:09:22,289 p=4749 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756/ /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756/AnsiballZ_na_ontap_lun.py && sleep 0'
+2022-04-07 22:09:22,297 p=4749 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '/usr/local/bin/python3.8 /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756/AnsiballZ_na_ontap_lun.py && sleep 0'
+2022-04-07 22:09:22,904 p=4749 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1649369362.0888004-4749-53683308403756/ > /dev/null 2>&1 && sleep 0'
+2022-04-07 22:09:22,917 p=4690 u=root n=ansible | TASK [Lun Create] ***********************************************************************************
+2022-04-07 22:09:22,917 p=4690 u=root n=ansible | changed: [localhost] => (item=lun1) => {
+    "actions": [
+        "lun_create"
+    ],
+    "ansible_loop_var": "item",
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "cert_filepath": null,
+            "comment": null,
+            "feature_flags": {},
+            "flexvol_name": "san_vol",
+            "force_remove": false,
+            "force_remove_fenced": false,
+            "force_resize": false,
+            "from_name": null,
+            "hostname": "cluster1.demo.netapp.com",
+            "http_port": null,
+            "https": true,
+            "key_filepath": null,
+            "name": "lun1",
+            "ontapi": null,
+            "os_type": "windows",
+            "ostype": "windows",
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+            "qos_adaptive_policy_group": null,
+            "qos_policy_group": null,
+            "san_application_template": null,
+            "size": 5,
+            "size_unit": "gb",
+            "space_allocation": false,
+            "space_reserve": false,
+            "state": "present",
+            "use_exact_size": true,
+            "use_rest": "auto",
+            "username": "admin",
+            "validate_certs": false,
+            "vserver": "san_svm"
+        }
+    },
+    "item": "lun1"
+}
+2022-04-07 22:09:22,924 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:22,949 p=4770 u=root n=ansible | <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2022-04-07 22:09:22,949 p=4770 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2022-04-07 22:09:22,958 p=4770 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229 `" && echo ansible-tmp-1649369362.9575143-4770-222940004762229="` echo /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229 `" ) && sleep 0'
+2022-04-07 22:09:22,969 p=4770 u=root n=ansible | redirecting (type: modules) ansible.builtin.na_ontap_lun_map to netapp.ontap.na_ontap_lun_map
+2022-04-07 22:09:23,118 p=4770 u=root n=ansible | Using module file /root/.ansible/collections/ansible_collections/netapp/ontap/plugins/modules/na_ontap_lun_map.py
+2022-04-07 22:09:23,118 p=4770 u=root n=ansible | <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-46909x0wobex/tmp7ln5qqhv TO /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229/AnsiballZ_na_ontap_lun_map.py
+2022-04-07 22:09:23,119 p=4770 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229/ /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229/AnsiballZ_na_ontap_lun_map.py && sleep 0'
+2022-04-07 22:09:23,127 p=4770 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c '/usr/local/bin/python3.8 /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229/AnsiballZ_na_ontap_lun_map.py && sleep 0'
+2022-04-07 22:09:23,846 p=4770 u=root n=ansible | <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1649369362.9575143-4770-222940004762229/ > /dev/null 2>&1 && sleep 0'
+2022-04-07 22:09:23,857 p=4690 u=root n=ansible | TASK [Create LUN mapping] ***************************************************************************
+2022-04-07 22:09:23,858 p=4690 u=root n=ansible | changed: [localhost] => (item=lun1) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "cert_filepath": null,
+            "feature_flags": {},
+            "hostname": "cluster1.demo.netapp.com",
+            "http_port": null,
+            "https": true,
+            "initiator_group_name": "igroup1",
+            "key_filepath": null,
+            "lun_id": null,
+            "ontapi": null,
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+            "path": "/vol/san_vol/lun1",
+            "state": "present",
+            "use_rest": "auto",
+            "username": "admin",
+            "validate_certs": false,
+            "vserver": "san_svm"
+        }
+    },
+    "item": "lun1",
+    "lun_naa_id": "600a0980774f6a36782b536b4d687848",
+    "lun_ostype": "windows",
+    "lun_serial": "wOj6x+SkMhxH",
+    "lun_size": 5368709120,
+    "lun_state": "online"
+}
+2022-04-07 22:09:23,862 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:23,862 p=4690 u=root n=ansible | META: ran handlers
+2022-04-07 22:09:23,865 p=4690 u=root n=ansible | Read vars_file 'global.yml'
+2022-04-07 22:09:23,865 p=4690 u=root n=ansible | META: ran handlers
+2022-04-07 22:09:23,866 p=4690 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:09:23,867 p=4690 u=root n=ansible | localhost                  : ok=4    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:20:18,013 p=5165 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:20:23,237 p=5165 u=root n=ansible | TASK [Get Ontap Info] *******************************************************************************
+2022-04-07 22:20:23,237 p=5165 u=root n=ansible | ok: [localhost]
+2022-04-07 22:20:24,019 p=5165 u=root n=ansible | TASK [Unmap LUN] ************************************************************************************
+2022-04-07 22:20:24,019 p=5165 u=root n=ansible | changed: [localhost] => (item=lun1)
+2022-04-07 22:20:24,835 p=5165 u=root n=ansible | TASK [Stop and Disable iSCSI] ***********************************************************************
+2022-04-07 22:20:24,836 p=5165 u=root n=ansible | changed: [localhost]
+2022-04-07 22:20:25,545 p=5165 u=root n=ansible | TASK [Delete the LUN] *******************************************************************************
+2022-04-07 22:20:25,546 p=5165 u=root n=ansible | changed: [localhost] => (item=lun1)
+2022-04-07 22:20:26,234 p=5165 u=root n=ansible | TASK [Delete the iGroup] ****************************************************************************
+2022-04-07 22:20:26,235 p=5165 u=root n=ansible | changed: [localhost] => (item=igroup1)
+2022-04-07 22:20:28,538 p=5165 u=root n=ansible | TASK [Delete the FlexVols] **************************************************************************
+2022-04-07 22:20:28,538 p=5165 u=root n=ansible | changed: [localhost] => (item=san_vol:san_svm)
+2022-04-07 22:20:29,312 p=5165 u=root n=ansible | TASK [Delete CIFS server on primary SVM] ************************************************************
+2022-04-07 22:20:29,312 p=5165 u=root n=ansible | ok: [localhost] => (item=Cluster)
+2022-04-07 22:20:29,768 p=5165 u=root n=ansible | ok: [localhost] => (item=VServer1)
+2022-04-07 22:20:30,209 p=5165 u=root n=ansible | ok: [localhost] => (item=cluster1)
+2022-04-07 22:20:30,654 p=5165 u=root n=ansible | ok: [localhost] => (item=cluster1-01)
+2022-04-07 22:20:31,106 p=5165 u=root n=ansible | ok: [localhost] => (item=cluster1-02)
+2022-04-07 22:20:31,561 p=5165 u=root n=ansible | ok: [localhost] => (item=san_svm)
+2022-04-07 22:20:32,007 p=5165 u=root n=ansible | ok: [localhost] => (item=svm_san)
+2022-04-07 22:20:32,453 p=5165 u=root n=ansible | ok: [localhost] => (item=svm_san2)
+2022-04-07 22:20:45,638 p=5165 u=root n=ansible | TASK [Delete the SVM] *******************************************************************************
+2022-04-07 22:20:45,638 p=5165 u=root n=ansible | changed: [localhost]
+2022-04-07 22:20:45,646 p=5165 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:20:45,647 p=5165 u=root n=ansible | localhost                  : ok=8    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:21:12,543 p=5504 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:21:14,426 p=5504 u=root n=ansible | TASK [Create primary SVM] ***************************************************************************
+2022-04-07 22:21:14,427 p=5504 u=root n=ansible | [WARNING]: Falling back to ZAPI because of unsupported option(s) or option value(s) in REST:
+['root_volume_aggregate']
+
+2022-04-07 22:21:14,427 p=5504 u=root n=ansible | changed: [localhost]
+2022-04-07 22:21:14,434 p=5504 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:21:14,435 p=5504 u=root n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:21:27,977 p=5544 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:21:28,804 p=5544 u=root n=ansible | TASK [Create iSCSI interface for node01] ************************************************************
+2022-04-07 22:21:28,805 p=5544 u=root n=ansible | changed: [localhost]
+2022-04-07 22:21:29,427 p=5544 u=root n=ansible | TASK [Create iSCSI interfaces for node02] ***********************************************************
+2022-04-07 22:21:29,428 p=5544 u=root n=ansible | changed: [localhost]
+2022-04-07 22:21:29,436 p=5544 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:21:29,436 p=5544 u=root n=ansible | localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-04-07 22:42:38,035 p=6393 u=root n=ansible | PLAY [localhost] ************************************************************************************
+2022-04-07 22:42:38,716 p=6393 u=root n=ansible | TASK [Get Ontap Info] *******************************************************************************
+2022-04-07 22:42:38,717 p=6393 u=root n=ansible | ok: [localhost]
+2022-04-07 22:42:39,164 p=6393 u=root n=ansible | TASK [Get Ontap Info] *******************************************************************************
+2022-04-07 22:42:39,165 p=6393 u=root n=ansible | ok: [localhost]
+2022-04-07 22:42:39,217 p=6393 u=root n=ansible | TASK [Find aggregate with lowest IOPS] **************************************************************
+2022-04-07 22:42:39,218 p=6393 u=root n=ansible | ok: [localhost]
+2022-04-07 22:42:41,216 p=6393 u=root n=ansible | TASK [Provision volume on selected aggregate] *******************************************************
+2022-04-07 22:42:41,216 p=6393 u=root n=ansible | changed: [localhost]
+2022-04-07 22:42:41,224 p=6393 u=root n=ansible | PLAY RECAP ******************************************************************************************
+2022-04-07 22:42:41,225 p=6393 u=root n=ansible | localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
