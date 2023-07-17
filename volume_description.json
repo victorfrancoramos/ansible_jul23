@@ -1,0 +1,14 @@
+{
+    "aggregates": [
+        {
+            "name": "aggr1_cluster2_01"
+        }
+    ],
+    "name": "api_vol_2",
+    "space": {
+        "size": "200m"
+    },
+    "svm": {
+        "name": "svm21"
+    }
+}
