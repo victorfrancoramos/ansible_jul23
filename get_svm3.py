@@ -11,3 +11,19 @@ svm = Svm()
 svm.get()
 print("Simple option:")
 print(svm)
+
+# Other option
+print("Other option:")
+print(list(Svm.get_collection()))
+
+# To get details
+print("To get details:")
+for x in Svm.get_collection():
+ x.get()
+ print(x)
+ print("Svm name:")
+ print(x.name)
+ print("Svm uuid:")
+ print(x.uuid)
+ print("Svm type:")
+ print(x, type(x))
