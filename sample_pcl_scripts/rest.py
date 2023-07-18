@@ -20,12 +20,13 @@ from getpass import getpass
 import logging
 
 from netapp_ontap import config, HostConnection, NetAppRestError
-from netapp_ontap.resources import Aggregate, Svm, Volume
+1
 
 def create_aggregate(aggr_name: str, node_name: str, disk_count: int) -> None:
     """Create an aggregate on the specified node"""
 
     aggregate = Aggregate.from_dict({
+    #'node.name': node_name,
     'node': {'name':node_name},
     'name': aggr_name,
     'block_storage': {'primary': {'disk_count': disk_count}}
@@ -57,14 +58,22 @@ def create_svm(vserver_name: str, aggr_name: str) -> None:
 def make_volume(volume_name: str, vserver_name: str, aggr_name: str, volume_size: int) -> None:
     """Creates a new volume in a SVM"""
 
+    '''
     data = {
         'name': volume_name,
         'svm': {'name':vserver_name},
         'aggregates': [{'name': aggr_name }],
         'size': volume_size
     }
-
     volume = Volume(**data)
+    '''
+     volume = Volume.from_dict({
+    'name': volume_name,
+    'svm': {'name':vserver_name},
+    'aggregates': [{'name': aggr_name }],
+    'size': volume_size
+    })
+   
 
     try:
         volume.post()
