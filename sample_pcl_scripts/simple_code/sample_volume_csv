@@ -8,6 +8,8 @@ from netapp_ontap import error
 
 from netapp_ontap.resources import Volume
 
+import numpy
+
 # 2. Defining variables
 USERNAME = "admin"
 PASSWORD = "Netapp1!"
@@ -19,12 +21,18 @@ config.CONNECTION = conn
 
 # 4. List the SVMs
 try:
+    # create empty lists with volume names and uuids
+    volume_names = []
+    volume_uuids = []
     volume = Volume.get_collection()
-    #print(list(svm))
     for i in volume:
         print(f"Volume name {i.name}")
+        volume_names.append(i.name)
         print(f"volume uuid {i.uuid}")
-#        print(f"volume size {i.size}")
+        volume_uuids.append(i.uuid)
+    print(f"List of volume names {volume_names}")    
+    print(f"List of volume uuids {volume_uuids}")    
+    numpy.savetxt('volumes.csv', [p for p in zip(volume_names, volume_uuids)], delimiter=',', fmt='%s')
 except NetAppRestError:
     print("Error:- " % error.http_err_response.http_response.text)
     print("Exception caught :" + str(error))
