@@ -11,7 +11,7 @@ from netapp_ontap.resources import Svm
 # 2A. Defining variables
 CLUSTER_IP = "192.168.0.102"
 
-# 2A. Asking for variables
+# 2B. Asking for variables
 USERNAME = input("Please type the username: ")
 PASSWORD = input("Please type the password: ")
 
